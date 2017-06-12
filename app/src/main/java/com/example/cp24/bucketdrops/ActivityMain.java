@@ -24,7 +24,7 @@ public class ActivityMain extends AppCompatActivity {
     };
 
     private void showDialogAdd() {
-        DialogAdd dialog = new DialogAdd();
+        addAction dialog = new addAction();
         dialog.show(getSupportFragmentManager(), "Add");
     }
 

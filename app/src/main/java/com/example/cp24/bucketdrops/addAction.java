@@ -11,11 +11,16 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.example.cp24.bucketdrops.beans.Drop;
+
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 /**
  * Created by cp24 on 2017-06-11.
  */
 
-public class DialogAdd extends DialogFragment {
+public class addAction extends DialogFragment {
 
     private ImageButton mBtnClose;
     private EditText mInputWhat;
@@ -36,16 +41,25 @@ public class DialogAdd extends DialogFragment {
         }
     };
 
+    //TODO process date
     private void addAction() {
         // get the value of the 'goal' or 'to-do'
         // get the time when it was added
         String what = mInputWhat.getText().toString();
         long now = System.currentTimeMillis();
 
+        RealmConfiguration configuration = new RealmConfiguration.Builder(getActivity()).build();
+
+        Realm.setDefaultConfiguration(configuration);
+        Realm realm = Realm.getDefaultInstance();
+        Drop drop = new Drop(what, now, 0, false);
+        realm.beginTransaction();;
+        realm.copyToRealm(drop);
+        realm.commitTransaction();;
+        realm.close();
+
     }
 
-    public DialogAdd() {
-    }
 
 
     @Nullable
