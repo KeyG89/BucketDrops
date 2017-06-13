@@ -20,7 +20,7 @@ import io.realm.RealmConfiguration;
  * Created by cp24 on 2017-06-11.
  */
 
-public class addAction extends DialogFragment {
+public class DialogAdd extends DialogFragment {
 
     private ImageButton mBtnClose;
     private EditText mInputWhat;
