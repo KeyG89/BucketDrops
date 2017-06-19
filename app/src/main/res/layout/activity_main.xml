@@ -18,7 +18,6 @@
     layout="@layout/toolbar"/>
 
 
-
     <com.example.cp24.bucketdrops.widgets.BucketRecyclerView
         android:id="@+id/rv_drops"
         android:layout_below="@id/toolbar"
