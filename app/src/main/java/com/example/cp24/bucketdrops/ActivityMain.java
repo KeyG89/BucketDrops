@@ -3,7 +3,6 @@ package com.example.cp24.bucketdrops;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +12,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.example.cp24.bucketdrops.adapters.AdapterDrops;
 import com.example.cp24.bucketdrops.beans.Drop;
+import com.example.cp24.bucketdrops.widgets.BucketRecyclerView;
 
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
@@ -24,9 +24,10 @@ public class ActivityMain extends AppCompatActivity {
     ImageView logo;
     Toolbar mToolbar;
     Button mBtnAdd;
-    RecyclerView mRecycler;
+    BucketRecyclerView mRecycler;
     Realm mRealm;
     RealmResults<Drop> mResults;
+    View mEmptyView;
     AdapterDrops mAdapter;
 
     private View.OnClickListener mBtnAddListener = new View.OnClickListener() {
@@ -62,8 +63,12 @@ public class ActivityMain extends AppCompatActivity {
 
         logo =  (ImageView) findViewById(R.id.iv_logo);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mEmptyView = findViewById(R.id.empty_drops);
+
         mBtnAdd = (Button) findViewById(R.id.btn_add);
-        mRecycler = (RecyclerView) findViewById(R.id.rv_drops);
+        mRecycler = (BucketRecyclerView) findViewById(R.id.rv_drops);
+        mRecycler.hideIfEmpty(mToolbar);
+        mRecycler.showIfEmpty(mEmptyView);
         mAdapter = new AdapterDrops(this, mResults);
 
 

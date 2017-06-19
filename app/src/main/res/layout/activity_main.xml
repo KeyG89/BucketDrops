@@ -18,7 +18,7 @@
 
         />
 
-    <android.support.v7.widget.RecyclerView
+    <com.example.cp24.bucketdrops.widgets.BucketRecyclerView
         android:id="@+id/rv_drops"
         android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
@@ -28,8 +28,7 @@
 -->
 
 
-
-
-
-<include layout="@layout/empty_drops" />
+    <include
+        android:id="@+id/empty_drops"
+        layout="@layout/empty_drops" />
 </RelativeLayout>
